@@ -1,0 +1,18 @@
+.card{
+    display: inline-block;
+    margin: 15px;
+}
+
+.rest:hover,.first:hover{
+    cursor: pointer;
+    background-color: cadetblue;
+}
+.active{
+    background-color: cadetblue;
+}
+.sticky-top{
+    top:80px;
+}
+.cart{
+    width:100%;
+}

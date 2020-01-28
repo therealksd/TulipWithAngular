@@ -1,0 +1,38 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="(ProductsKey.length>0)">
+        <tr *ngFor="let obj of ProductsKey">
+            <td><img [src]="obj.image" class="thumbnail"/></td>
+            <td>{{obj.name}}</td>
+            <td>
+                <div class="row no-gutters">
+                    <div class="col-2">
+                        <button class="btn btn-secondary btn-block" (click)="updateCart(obj.key,-1)">-</button>
+                    </div>
+                    <div class="col-2 text-center">{{obj.quantity}}</div>
+                    <div class="col-2">
+                        <button class="btn btn-secondary btn-block" (click)="updateCart(obj.key,+1)">+</button>
+                    </div>
+                </div>
+            </td>
+            <td>{{obj.price | currency:'USD':true}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>TOTAL</td>
+            <th>{{total | currency:'USD':true}}</th>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary" 
+*ngIf="(ProductsKey.length>0)"
+routerLink="/check-out"
+>Check Out</button>

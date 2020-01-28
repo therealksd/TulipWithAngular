@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-6 im"></div>
+    <div class="col-6 fo">
+        <ng-form ngForm #f="ngForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" ngModel name="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="pass">Password:</label>
+                <input type="password" ngModel name="pass" id="pass" class="form-control" required>
+            </div>
+            <button class="btn btn-primary" (click)="onSignIn(f)" [disabled]="!f.valid">Signin</button>
+            <button class="btn btn-danger l" (click)="onSignUp(f)" [disabled]="!f.valid">Signup</button>
+            <button class="btn btn-secondary r" (click)="login()" >G</button>
+        </ng-form>
+    </div>
+</div>

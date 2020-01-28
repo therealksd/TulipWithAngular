@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-md-6">
+        <h1>Shipping Form</h1>
+        <form #form="ngForm" (ngSubmit)="placeOrder(form)">
+            <div class="form-group row">
+                <label for="" class="col-md-2 col-form-label">Name</label>
+                <div class="col-md-10">
+                    <input type="text" ngModel #fname="ngModel" name="name" id="name" class="form-control" required >
+                    <div *ngIf="fname.invalid && fname.touched">
+                        <div class="alert alert-danger" *ngIf="fname.errors.required">required</div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-2 col-form-label">Address</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" ngModel #l1="ngModel"  name="line1" placeholder="Line1" required>
+                    <div *ngIf="l1.invalid && l1.touched">
+                        <div class="alert alert-danger" *ngIf="l1.errors.required">required</div>
+                    </div><br>
+                    <input type="text" class="form-control" ngModel #l2="ngModel"  name="line2" placeholder="Line2" required >
+                    <div *ngIf="l2.invalid && l2.touched">
+                        <div class="alert alert-danger" *ngIf="l2.errors.required">required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-2 col-form-label">City</label>
+                <div class="col-md-10">
+                    <input type="text" ngModel #city="ngModel"  name="city" class="form-control">
+                    <div *ngIf="city.invalid && city.touched">
+                        <div class="alert alert-danger" *ngIf="city.errors.required">required</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" [disabled]="form.invalid">Place Order</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Order Summary</h5>
+              <p class="card-text">You have  Items in Your Cart</p>
+              <div class="card-text" *ngIf="listOfProds.length">
+                  <table class="table">
+                      <tbody>
+                          <tr *ngFor="let p of listOfProds">
+                              <td>{{p.name}} X {{p.quantity}}</td>
+                              <td>{{(p.price*p.quantity) | currency:"$"}}</td>
+                          </tr>
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <th>Total</th>
+                              <th>{{total | currency:"$"}}</th>
+                          </tr>
+                      </tfoot>
+                  </table>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+

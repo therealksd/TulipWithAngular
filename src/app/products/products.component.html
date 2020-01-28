@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="sticky-top">
+            <ul class="list-group">
+                <li class="first list-group-item" [class.active]="category === null" routerLink="/">All Categories</li>
+                <li *ngFor="let c of categories" 
+                    class="rest list-group-item" 
+                    routerLink="/"
+                    [queryParams]="{category:c.key}"
+                    [class.active]="category === c.key"
+                    >
+                    {{c.payload.val().name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div *ngFor="let f of filteredCategories" class="card" style="width: 18rem;">
+            <img [src]="f.imageurl" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{f.name}} </h5>
+              <p class="card-text">{{f.price | currency:"$"}}</p>
+            </div>
+            <button class="btn btn-secondary btn-block" (click)="addToCart(f)">Add To Cart</button>
+            <div *ngFor="let sp of listOfShoppingProds">
+                <div *ngIf="sp.key===f.key">
+                    
+                    <div class="row no-gutters" *ngIf="sp.payload.val()['quantity'] > 0">
+                        <div class="col-2">
+                            <button class="btn btn-secondary btn-block" (click)="updateCart(f.key,-1)">-</button>
+                        </div>
+                        <div class="col text-center">
+                            {{sp.payload.val()['quantity']}} in Cart
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-secondary btn-block" (click)="updateCart(f.key,1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+          </div>
+    </div>
+</div>
+
+
+

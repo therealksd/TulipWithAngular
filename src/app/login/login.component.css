@@ -1,0 +1,24 @@
+fo{
+    margin-bottom: auto;
+}
+.btn:disabled{
+    cursor: none;
+}
+.r{
+    float: right;
+    border-radius: 100%;
+    background-color: red;
+    font-weight: bold;
+    border-color: red;
+    font-size: large;
+}
+.l{
+    margin-left: 10px;
+}
+.im{
+    background-image:url('C:\Users\soodk\project1\src\assets\gs.jpg');
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
